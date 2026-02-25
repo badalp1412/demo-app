@@ -1,0 +1,62 @@
+/* General Reset */
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --brand-green: #1a3c34;
+  --cream: #eae8e1;
+}
+
+/* --- Chobani Serif (Headings) --- */
+@font-face {
+  font-family: "Chobani Serif";
+  src: url("/fonts/ChobaniSerif-Regular-Web.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Chobani Serif";
+  src: url("/fonts/ChobaniSerif-RegularItalic-Web.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Chobani Serif";
+  src: url("/fonts/ChobaniSerif-Semibold-Web.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Chobani Serif";
+  src: url("/fonts/ChobaniSerif-SemiboldItalic-Web.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* --- Chobani Sans (Body & UI) --- */
+@font-face {
+  font-family: "Chobani Sans";
+  src: url("/fonts/Chobani-Sans-Standard-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Chobani Sans";
+  src: url("/fonts/Chobani-Sans-Standard-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  font-family: "Chobani Sans", serif;
+  /* Serif font to match "Feed the Dream" */
+  color: var(--cream);
+}
