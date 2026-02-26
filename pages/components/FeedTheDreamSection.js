@@ -252,7 +252,7 @@ export default function FeedTheDreamSection() {
 
       '&::before': {
         width: '100%',
-        height: '360px',
+        height: '359px',
         backgroundImage: 'url(/images/banner-bg-img2-mob.svg)',
         backgroundPosition: '100% 50%',
         backgroundSize: '100%',

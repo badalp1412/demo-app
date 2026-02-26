@@ -36,6 +36,23 @@ export default function EnterToWinSection() {
       display: "none",
     },
 
+    "@media (min-width:768px)": {
+      display: "flex",
+    },
+
+    "@media (min-width:768px) and (max-width:1199px)": {
+      padding: "40px",
+    },
+
+    "@media (min-width:768px)":{
+      "&::before": {
+        right: "-86px",
+        width: "100%",
+        maxWidth: "70%",
+        backgroundPosition: "100% 20%",
+      }
+    },
+
     // ✅ MOBILE EXACT MATCH (from your CSS)
     "@media (max-width:767px)": {
       "&::before": {
@@ -80,6 +97,17 @@ export default function EnterToWinSection() {
     width: { xs: "100%", md: "32vw" },
     maxWidth: { xs: "100%", md: "420px" },
     textAlign: { xs: "center", md: "left" },
+
+    "@media (min-width:768px)": {
+      flex: "1",
+      zIndex: "10",
+      maxWidth: "571px",
+      width: "30vw",
+      textAlign: "left",
+      display: "flex",
+      flexDirection: "column",
+    }
+
   };
 
   const titleSx = {
@@ -89,7 +117,7 @@ export default function EnterToWinSection() {
     fontSize: { xs: "45px", md: "60px", lg: "70px" },
     lineHeight: "110%",
     margin: 0,
-    marginBottom: { xs: "20px", md: "28px" },
+    marginBottom: { xs: "30px", md: "28px" },
   };
 
   const paragraphBaseSx = {
@@ -104,6 +132,13 @@ export default function EnterToWinSection() {
     marginLeft: { xs: "auto", md: 0 },
     marginRight: { xs: "auto", md: 0 },
     fontSize: "16px",
+
+    "@media (min-width:768px) and (max-width:1199px)": {
+      margin: "0 0 25px",
+      maxWidth: "310px",
+      minHeight: "60px",
+      fontSize: "18px",
+    },
   };
 
   const ctaSx = {
@@ -122,14 +157,20 @@ export default function EnterToWinSection() {
   };
 
   const termsSx = {
-    marginTop: { xs: "18px", md: "16px" },
-    fontFamily: "Chobani Serif, serif",
-    fontSize: "12px",
+    marginTop: { xs: "30px", md: "16px" },
+    fontFamily: "Chobani Sans",
+    fontSize: "14px",
     lineHeight: "130%",
     color: "#1A3C34",
     maxWidth: { xs: "200px", md: "100%" },
     marginLeft: { xs: "auto", md: 0 },
     marginRight: { xs: "auto", md: 0 },
+
+    "@media (min-width:768px) and (max-width:1199px)": {
+      margin: "25px 0 0",
+      maxWidth: "100%",
+    },
+
   };
 
   return (
