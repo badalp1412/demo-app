@@ -321,7 +321,7 @@ export default function FeedTheDreamSection() {
     marginBottom: '111px',
     fontFamily: 'Chobani Serif, serif',
     fontWeight: 600,
-    color: '#EAE8E1',
+    color: '#F8F3E3',
 
     '@media (max-width:1599px)': {
       fontSize: '60px',

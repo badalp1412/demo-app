@@ -5,96 +5,80 @@ export default function EnterToWinSection() {
   const desktopBg = "/images/score-section-bg.svg";
 
   const sectionSx = {
-    position: "relative",
+  position: "relative",
+  width: "100%",
+  overflow: "hidden",
+  backgroundColor: "#F8F3E3",
+  
+  // --- DESKTOP (Default Styles) ---
+  padding: "70px 50px",
+
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    right: "-86px", // Combined your fixed desktop offset
+    height: "100%",
     width: "100%",
-    overflow: "hidden",
-    backgroundColor: "#EAE8E1",
-    padding: { xs: "40px 12px 390px", md: "56px 60px" },
+    maxWidth: "70%", // Consolidated your various maxWidths
+    backgroundImage: `url(${desktopBg})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "100% 20%", // The "Head Fix" position
+    zIndex: 1,
+    pointerEvents: "none",
+  },
 
-    // ✅ Desktop background (RIGHT SIDE ONLY)
+  "&::after": {
+    content: '""',
+    display: "none", // Hidden by default on desktop
+  },
+
+  // --- TABLET (768px to 1199px) ---
+  "@media (min-width: 768px) and (max-width: 1199px)": {
+    padding: "40px",
+  },
+
+  // --- MOBILE (Up to 767px) ---
+  "@media (max-width: 767px)": {
+    padding: "40px 12px 390px",
+
     "&::before": {
-      content: '""',
-      position: "absolute",
-      top: 0,
-      right: 0,
-      height: "100%",
-      width: "100%",
-      maxWidth: { md: "66%", lg: "68%" },
-      backgroundImage: `url(${desktopBg})`,
-      backgroundRepeat: "no-repeat",
+      // Overriding desktop before with mobile background
+      backgroundImage: "url(/images/score-section-bg-mob.svg)",
+      backgroundPosition: "top",
       backgroundSize: "cover",
-
-      // 🔥 THIS FIXES HEAD TOUCHING ISSUE
-      backgroundPosition: "right 40%",
-
-      zIndex: 1,
-      pointerEvents: "none",
+      backgroundRepeat: "no-repeat",
+      maxWidth: "100%",
+      maxHeight: "410px",
+      right: 0,
+      left: 0,
+      top: 0,
+      bottom: 0,
+      marginTop: "auto",
     },
 
     "&::after": {
       content: '""',
-      display: "none",
+      display: "block", // Shown only on mobile
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "151px",
+      backgroundImage: "url(/images/score-big-mob-bg.svg)",
+      backgroundSize: "105%",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "-33px 0%",
+      zIndex: 2,
     },
-
-    "@media (min-width:768px)": {
-      display: "flex",
-    },
-
-    "@media (min-width:768px) and (max-width:1199px)": {
-      padding: "40px",
-    },
-
-    "@media (min-width:768px)":{
-      "&::before": {
-        right: "-86px",
-        width: "100%",
-        maxWidth: "70%",
-        backgroundPosition: "100% 20%",
-      }
-    },
-
-    // ✅ MOBILE EXACT MATCH (from your CSS)
-    "@media (max-width:767px)": {
-      "&::before": {
-        content: '""',
-        position: "absolute",
-        backgroundImage: "url(/images/score-section-bg-mob.svg)",
-        backgroundPosition: "top",
-        width: "100%",
-        height: "100%",
-        maxHeight: "410px",
-        marginTop: "auto",
-        right: 0,
-        left: 0,
-        maxWidth: "100%",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        top: "0px",
-        bottom: "0px",
-        zIndex: 1,
-      },
-
-      "&::after": {
-        content: '""',
-        display: "block",
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "151px",
-        backgroundImage: "url(/images/score-big-mob-bg.svg)",
-        backgroundSize: "105%",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "-33px 0%",
-        zIndex: 2,
-      },
-    },
-  };
+  },
+};
 
   const contentSx = {
     position: "relative",
     zIndex: 5,
-    width: { xs: "100%", md: "32vw" },
+    width: { xs: "100%", md: "32vw", lg: "40vw !important" },
     maxWidth: { xs: "100%", md: "420px" },
     textAlign: { xs: "center", md: "left" },
 
@@ -102,7 +86,7 @@ export default function EnterToWinSection() {
       flex: "1",
       zIndex: "10",
       maxWidth: "571px",
-      width: "30vw",
+      width: "40vw",
       textAlign: "left",
       display: "flex",
       flexDirection: "column",
@@ -114,10 +98,10 @@ export default function EnterToWinSection() {
     fontFamily: "Chobani Serif, serif",
     color: "#1A3C34",
     fontWeight: 400,
-    fontSize: { xs: "45px", md: "60px", lg: "70px" },
+    fontSize: { xs: "45px", md: "50px", lg: "70px", xl: "80px" },
     lineHeight: "110%",
     margin: 0,
-    marginBottom: { xs: "30px", md: "28px" },
+    marginBottom: { xs: "30px", md: "50px", lg: "80px", xl: "126px" },
   };
 
   const paragraphBaseSx = {
@@ -127,11 +111,12 @@ export default function EnterToWinSection() {
     letterSpacing: "-0.24px",
     lineHeight: "130%",
     margin: 0,
-    marginBottom: { xs: "30px", md: "22px" },
-    maxWidth: { xs: "296px", md: "320px" },
+    marginBottom: { xs: "30px", md: "25px" },
+    maxWidth: { xs: "296px", md: "320px", lg: "450px" },
     marginLeft: { xs: "auto", md: 0 },
     marginRight: { xs: "auto", md: 0 },
-    fontSize: "16px",
+    fontSize: { xs: "16px", md: "18px", lg: "22px" },
+    minHeight: { xs: "auto", md: "60px", lg: "80px" },
 
     "@media (min-width:768px) and (max-width:1199px)": {
       margin: "0 0 25px",
@@ -154,10 +139,18 @@ export default function EnterToWinSection() {
     backgroundColor: "#1A3C34",
     color: "#EAE8E1",
     border: "1px solid #1A3C34",
+    maxWidth: "fit-content",
+    transition: "all 0.3s ease-in-out",
+
+    "&:hover": {
+      backgroundColor: "transparent", // Or theme.palette.primary.light
+      color: "var(--brand-green)",     // Or theme.palette.secondary.main
+      transform: "translateY(-2px)", 
+    },
   };
 
   const termsSx = {
-    marginTop: { xs: "30px", md: "16px" },
+    marginTop: { xs: "30px", md: "25px" },
     fontFamily: "Chobani Sans",
     fontSize: "14px",
     lineHeight: "130%",
@@ -183,7 +176,7 @@ export default function EnterToWinSection() {
         {/* Desktop text */}
         <Typography
           component="p"
-          sx={{ ...paragraphBaseSx, display: { xs: "none", md: "block" } }}
+          sx={{ ...paragraphBaseSx, display: { xs: "none", md: "block !important" } }}
         >
           Enter for a chance to get your soccer club sponsored or to win U.S.
           Soccer prizes.
