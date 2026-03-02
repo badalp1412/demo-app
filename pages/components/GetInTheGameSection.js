@@ -34,6 +34,7 @@ export default function GetInTheGameSection({ data }) {
     lineHeight: '100%',
     textTransform: 'capitalize',
     outline: 'none',
+    fontFamily: '"Chobani Sans", serif',
     '&::placeholder': {
       color: '#F8F3E3',
     },
@@ -55,30 +56,56 @@ export default function GetInTheGameSection({ data }) {
         textAlign: 'center',
 
         // Padding translated from your CSS, making it standard responsive
-        padding: { xs: '67px 20px 98px', md: '80px 40px 120px' },
+        padding: { xs: '200px 30px 300px', md: '80px 40px 120px' },
         minHeight: { md: '800px' },
 
         // Background styling identical to FeedTheDream methodology
         '&::before': {
           content: '""',
           position: 'absolute',
-          top: 0,
-          left: 0,
+          top: '3%',
+          left: '8%',
           right: 0,
           bottom: 0,
           zIndex: 1,
+          width: '100%',
+          heigh: '200px',
           backgroundRepeat: 'no-repeat',
           backgroundImage: {
             xs: `url(${
               data?.backgroundAssetMobile?.url ||
-              '/images/get-in-game-bg-mob.png'
+              '../images/get-in-game-bg-mob.png'
             })`,
             md: `url(${
-              data?.backgroundAssetDesktop?.url || '/images/get-in-game-bg.png'
+              data?.backgroundAssetDesktop?.url || '../images/get-in-game-bg.png'
             })`,
           },
-          backgroundSize: 'cover',
-          backgroundPosition: { xs: 'bottom', md: 'center bottom' },
+          backgroundSize: 'contain',
+          backgroundPosition: { xs: 'top right', md: 'center bottom' },
+          pointerEvents: 'none',
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          top: '74%',
+          left: '0%',
+          right: '12%',
+          bottom: 0,
+          zIndex: 1,
+          width: '100%',
+          height: '100%',
+          backgroundRepeat: 'no-repeat',
+          backgroundImage: {
+            xs: `url(${
+              data?.backgroundAssetMobile?.url ||
+              '../images/get-in-game-bg-after.png'
+            })`,
+            md: `url(${
+              data?.backgroundAssetDesktop?.url || 'none'
+            })`,
+          },
+          backgroundSize: 'contain',
+          backgroundPosition: { xs: 'top right', md: 'center bottom' },
           pointerEvents: 'none',
         },
       }}
@@ -119,8 +146,9 @@ export default function GetInTheGameSection({ data }) {
             fontWeight: 400,
             lineHeight: '130%',
             letterSpacing: '-0.044px',
-            maxWidth: '600px',
+            maxWidth: { xs: '315px', md: '570px' },
             margin: { xs: '0 auto 40px auto', md: '0 auto 54px auto' },
+            fontFamily: '"Chobani Serif", serif',
           }}
         >
           {data?.subhead ||
@@ -142,6 +170,7 @@ export default function GetInTheGameSection({ data }) {
               fontSize: '14px',
               border: '1px solid transparent',
               transition: 'all 0.3s ease',
+              fontFamily: '"Chobani Sans", serif',
               '&:hover': {
                 backgroundColor: 'transparent',
                 color: '#F8F3E3',
@@ -164,7 +193,7 @@ export default function GetInTheGameSection({ data }) {
               flexWrap: 'wrap',
             }}
           >
-            <Box sx={{ flex: 1, minWidth: '280px' }}>
+            <Box sx={{ flex: 1, minWidth: '280px',}}>
               <Box
                 component="input"
                 type="text"
@@ -234,7 +263,7 @@ export default function GetInTheGameSection({ data }) {
             <input
               type="checkbox"
               id="age"
-              style={{ marginTop: '4px', cursor: 'pointer' }}
+              style={{ cursor: 'pointer' }}
             />
             <Typography
               component="label"
@@ -245,6 +274,7 @@ export default function GetInTheGameSection({ data }) {
                 lineHeight: '130%',
                 letterSpacing: '-0.065px',
                 cursor: 'pointer',
+                fontFamily: '"Chobani Sans", serif',
               }}
             >
               By checking the box, you agree that you are at least 18 years of
@@ -269,6 +299,7 @@ export default function GetInTheGameSection({ data }) {
                 lineHeight: '100%',
                 textTransform: 'capitalize',
                 transition: 'all 0.3s ease',
+                fontFamily: '"Chobani Sans", serif',
                 '&:hover': {
                   backgroundColor: 'transparent',
                   color: '#F8F3E3',

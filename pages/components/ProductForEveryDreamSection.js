@@ -935,7 +935,7 @@ export default function ProductForEveryDreamSection() {
                   sx={{
                     color: tab.fg,
                     lineHeight: 1.05,
-                    fontFamily: 'Chobani-Serif-Regular',
+                    fontFamily: 'Chobani Sans, serif',
                   }}
                 >
                   {tab.primary}

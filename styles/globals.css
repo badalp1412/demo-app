@@ -14,28 +14,28 @@
 /* --- Chobani Serif (Headings) --- */
 @font-face {
   font-family: "Chobani Serif";
-  src: url("/public/fonts/ChobaniSerif-Regular-Web.woff") format("woff");
+  src: url("../public/fonts/ChobaniSerif-Regular-Web.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Chobani Serif";
-  src: url("/public/fonts/ChobaniSerif-RegularItalic-Web.woff") format("woff");
+  src: url("../public/fonts/ChobaniSerif-RegularItalic-Web.woff") format("woff");
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Chobani Serif";
-  src: url("/public/fonts/ChobaniSerif-Semibold-Web.woff") format("woff");
+  src: url("../public/fonts/ChobaniSerif-Semibold-Web.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Chobani Serif";
-  src: url("/public/fonts/ChobaniSerif-SemiboldItalic-Web.woff") format("woff");
+  src: url("../public/fonts/ChobaniSerif-SemiboldItalic-Web.woff") format("woff");
   font-weight: 600;
   font-style: italic;
 }
@@ -43,20 +43,20 @@
 /* --- Chobani Sans (Body & UI) --- */
 @font-face {
   font-family: "Chobani Sans";
-  src: url("/public/fonts/Chobani-Sans-Standard-Regular.woff") format("woff");
+  src: url("../public/fonts/Chobani-Sans-Standard-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Chobani Sans";
-  src: url("/public/fonts/Chobani-Sans-Standard-Medium.woff") format("woff");
+  src: url("../public/fonts/Chobani-Sans-Standard-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
 
 body {
-  font-family: "Chobani-Serif-Regular";
+  font-family: 'Chobani Serif';
   /* Serif font to match "Feed the Dream" */
   color: var(--cream);
 }

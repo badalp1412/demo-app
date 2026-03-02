@@ -99,6 +99,8 @@ export default function EnterToWinSection() {
             margin: 0,
             marginBottom: { xs: "30px", md: "50px", lg: "80px", xl: "126px" },
             display: "block",
+            fontFamily: '"Chobani Serif", serif',
+            fontWeight: 300,
           }}
         >
           Score Big
@@ -116,6 +118,7 @@ export default function EnterToWinSection() {
             marginBottom: "25px",
             maxWidth: { md: "310px", lg: "450px" },
             fontSize: { md: "18px", lg: "22px" },
+            fontFamily: '"Chobani Serif", serif',
           }}
         >
           Enter for a chance to get your soccer club sponsored or to win U.S.
@@ -134,6 +137,7 @@ export default function EnterToWinSection() {
             marginBottom: "30px",
             maxWidth: "296px",
             fontSize: "16px",
+            fontFamily: '"Chobani Serif", serif',
           }}
         >
           Chobani is making youth soccer dreams come true across America, and
@@ -158,6 +162,7 @@ export default function EnterToWinSection() {
             maxWidth: "fit-content",
             transition: "all 0.3s ease-in-out",
             margin: { xs: "0 auto", md: "0" },
+            fontFamily: '"Chobani Sans", serif',
             "&:hover": {
               backgroundColor: "transparent",
               color: "#1A3C34",
@@ -178,6 +183,7 @@ export default function EnterToWinSection() {
             maxWidth: { xs: "200px", md: "100%" },
             marginLeft: { xs: "auto", md: 0 },
             marginRight: { xs: "auto", md: 0 },
+            fontFamily: '"Chobani Sans", serif',
           }}
         >
           For terms and conditions please click{" "}

@@ -92,6 +92,11 @@ export default function Navbar() {
               sx={{
                 borderColor: '#1A3C34',
                 color: '#1A3C34',
+                fontFamily: 'Chobani Sans, serif',
+                textTransform: 'none',
+                fontWeight: 400,
+                padding: '8px 10px',
+                lineHeight: '1',
                 '&:hover': { bgcolor: '#1A3C34', color: '#fff' },
               }}
             >

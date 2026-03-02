@@ -8,7 +8,7 @@ const theme = createTheme({
      * INFO: New font changes tags
      */
     d2c_h1: {
-      fontFamily: 'Chobani-Serif-Regular',
+      fontFamily: '"Chobani Serif", serif',
       '@media all and (max-width: 1199px)': {
         fontSize: '3.1rem',
         lineHeight: '1',
@@ -21,7 +21,7 @@ const theme = createTheme({
       },
     },
     d2c_perks: {
-      fontFamily: 'Chobani-Serif-Regular',
+      fontFamily: '"Chobani Serif", serif',
       '@media all and (max-width: 1199px)': {
         fontSize: '1.3rem',
         lineHeight: '0.5',
@@ -34,7 +34,7 @@ const theme = createTheme({
       },
     },
     d2c_h2: {
-      fontFamily: 'Chobani-Serif-Regular',
+      fontFamily: '"Chobani Serif", serif',
       '@media all and (max-width: 899px)': {
         fontSize: '1.6rem',
         lineHeight: '1',
@@ -52,7 +52,7 @@ const theme = createTheme({
       },
     },
     d2c_3_image: {
-      fontFamily: 'Chobani-Serif-Regular',
+      fontFamily: '"Chobani Serif", serif',
       '@media all and (max-width: 899px)': {
         fontSize: '1.6rem',
         lineHeight: '1',
@@ -70,7 +70,7 @@ const theme = createTheme({
       },
     },
     d2c_h3: {
-      fontFamily: 'Chobani-Serif-Regular',
+      fontFamily: '"Chobani Serif", serif',
       '@media all and (max-width: 899px)': {
         fontSize: '1.3rem',
         lineHeight: '1',

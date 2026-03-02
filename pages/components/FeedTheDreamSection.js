@@ -127,6 +127,7 @@ export default function FeedTheDreamSection() {
             color: '#F8F3E3',
             marginBottom: { xs: '30px', md: '50px', lg: '80px', xl: '111px' },
             display: 'block',
+            fontFamily: '"Chobani Serif", serif',
           }}
         >
           Feed the Dream.
@@ -143,6 +144,7 @@ export default function FeedTheDreamSection() {
             display: 'block',
             fontSize: { xs: '16px', md: '14px', lg: '15px', xl: '22px' },
             lineHeight: '130%',
+            fontFamily: '"Chobani Serif", serif',
           }}
         >
           We became the Official Nutrition Partner of U.S. Soccer because we
@@ -159,6 +161,7 @@ export default function FeedTheDreamSection() {
             display: 'block',
             fontSize: { xs: '16px', md: '14px', lg: '15px', xl: '22px' },
             lineHeight: '130%',
+            fontFamily: '"Chobani Serif", serif',
           }}
         >
           Our belief goes beyond logos on jerseys. This is nutrition that feeds
