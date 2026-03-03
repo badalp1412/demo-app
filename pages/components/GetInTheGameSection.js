@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Typography, Container, Grid } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { Box, Typography, Container, Grid } from "@mui/material";
 
 export default function GetInTheGameSection({ data }) {
   const [showContent, setShowContent] = useState(false);
@@ -9,8 +9,8 @@ export default function GetInTheGameSection({ data }) {
     const bgImage = new Image();
     const isMobile = window.innerWidth < 900; // Standard MUI 'md' breakpoint
     bgImage.src = isMobile
-      ? data?.backgroundAssetMobile?.url || '/images/get-in-game-bg-mob.png'
-      : data?.backgroundAssetDesktop?.url || '/images/get-in-game-bg.png';
+      ? data?.backgroundAssetMobile?.url || "/images/get-in-game-bg-mob.png"
+      : data?.backgroundAssetDesktop?.url || "/images/get-in-game-bg.png";
 
     bgImage.onload = () => setShowContent(true);
     bgImage.onerror = () => setShowContent(true); // Fallback to ensure text still loads if image path fails
@@ -22,24 +22,23 @@ export default function GetInTheGameSection({ data }) {
 
   // Shared form input styles mapped exactly from your CSS
   const formInputSx = {
-    width: '100%',
-    backgroundColor: '#1A3C34',
-    border: '1px solid #F8F3E3',
-    borderRadius: '5px',
-    padding: '20px 15px',
-    boxSizing: 'border-box',
-    color: '#F8F3E3',
-    fontSize: '14px',
+    width: "stretch",
+    backgroundColor: "#1A3C34",
+    border: "1px solid #F8F3E3",
+    borderRadius: "5px",
+    padding: "20px 15px",
+    boxSizing: "border-box",
+    color: "#F8F3E3",
+    fontSize: "14px",
     fontWeight: 400,
-    lineHeight: '100%',
-    textTransform: 'capitalize',
-    outline: 'none',
-    fontFamily: '"Chobani Sans", serif',
-    '&::placeholder': {
-      color: '#F8F3E3',
+    lineHeight: "100%",
+    textTransform: "capitalize",
+    outline: "none",
+    "&::placeholder": {
+      color: "#F8F3E3",
     },
-    '&:focus': {
-      boxShadow: '0px 0px 0px 3px #f8f3e33a',
+    "&:focus": {
+      boxShadow: "0px 0px 0px 3px #f8f3e33a",
     },
   };
 
@@ -49,151 +48,130 @@ export default function GetInTheGameSection({ data }) {
       disableGutters
       maxWidth={false}
       sx={{
-        position: 'relative',
-        width: '100%',
-        overflow: 'hidden',
-        backgroundColor: '#1A3C34',
-        textAlign: 'center',
+        position: "relative",
+        width: "100%",
+        overflow: "hidden",
+        backgroundColor: "#1A3C34",
+        textAlign: "center",
 
         // Padding translated from your CSS, making it standard responsive
-        padding: { xs: '200px 30px 300px', md: '80px 40px 120px' },
-        minHeight: { md: '800px' },
+        padding: { xs: "200px 30px 300px", md: "80px 40px 120px" },
+        minHeight: { md: "800px" },
 
         // Background styling identical to FeedTheDream methodology
-        '&::before': {
+        "&::before": {
           content: '""',
-          position: 'absolute',
-          top: '3%',
-          left: '8%',
+          position: "absolute",
+          top: 0,
+          left: 0,
           right: 0,
           bottom: 0,
           zIndex: 1,
-          width: '100%',
-          heigh: '200px',
-          backgroundRepeat: 'no-repeat',
+          width: "100%",
+          heigh: "200px",
+          backgroundRepeat: "no-repeat",
           backgroundImage: {
             xs: `url(${
               data?.backgroundAssetMobile?.url ||
-              '../images/get-in-game-bg-mob.png'
+              "../images/get-in-game-bg-mob.png"
             })`,
             md: `url(${
-              data?.backgroundAssetDesktop?.url || '../images/get-in-game-bg.png'
+              data?.backgroundAssetDesktop?.url ||
+              "../images/get-in-game-bg.png"
             })`,
           },
-          backgroundSize: 'contain',
-          backgroundPosition: { xs: 'top right', md: 'center bottom' },
-          pointerEvents: 'none',
+          backgroundSize: "contain",
+          backgroundPosition: { xs: "top right", md: "center bottom" },
+          pointerEvents: "none",
         },
-        '&::after': {
+        "&::after": {
           content: '""',
-          position: 'absolute',
-          top: '74%',
-          left: '0%',
-          right: '12%',
+          position: "absolute",
+          top: {
+            xs: "70%",
+            sm: "65%",
+            md: "auto",
+          },
+          '@media (max-width: 390px)': {
+            top: "74%", 
+          },
+          '@media (max-height: 700px) and (max-width: 450px)': {
+            top: "76%", 
+          },
+          left: "0%",
+          right: "12%",
           bottom: 0,
           zIndex: 1,
-          width: '100%',
-          height: '100%',
-          backgroundRepeat: 'no-repeat',
+          width: "100%",
+          height: "100%",
+          backgroundRepeat: "no-repeat",
           backgroundImage: {
             xs: `url(${
               data?.backgroundAssetMobile?.url ||
-              '../images/get-in-game-bg-after.png'
+              "../images/get-in-game-bg-after.png"
             })`,
-            md: `url(${
-              data?.backgroundAssetDesktop?.url || 'none'
-            })`,
+            md: `url(${data?.backgroundAssetDesktop?.url || "none"})`,
           },
-          backgroundSize: 'contain',
-          backgroundPosition: { xs: 'top right', md: 'center bottom' },
-          pointerEvents: 'none',
+          backgroundSize: "contain",
+          backgroundPosition: { xs: "top right", md: "center bottom" },
+          pointerEvents: "none",
         },
       }}
     >
       <Box
         sx={{
-          position: 'relative',
+          position: "relative",
           zIndex: 2,
-          maxWidth: '696px',
-          margin: '0 auto',
+          maxWidth: "696px",
+          margin: {
+            xs: "0 auto",
+            sm: "75px auto",
+            md: "0 auto",
+          },
           opacity: showContent ? 1 : 0,
-          transition: 'opacity 0.4s ease-in',
+          transition: "opacity 0.4s ease-in",
         }}
       >
-        {/* Title */}
         <Typography
           variant="d2c_h1"
           component="h1"
           sx={{
-            color: '#F8F3E3',
-            fontSize: { xs: '45px', md: '60px', lg: '80px' },
+            color: "#F8F3E3",
+            fontSize: { xs: "45px", md: "60px", lg: "80px" },
             fontWeight: 400,
-            lineHeight: '100%',
-            letterSpacing: '-1.2px',
-            marginBottom: { xs: '30px', md: '50px' },
+            lineHeight: "100%",
+            letterSpacing: "-1.2px",
+            marginBottom: { xs: "30px", md: "50px" },
           }}
         >
-          {data?.title || 'Get in the Game'}
+          {data?.title || "Get in the Game"}
         </Typography>
-
-        {/* Subtitle */}
         <Typography
           variant="d2c_p"
           component="p"
           sx={{
-            color: '#EAE8E1',
-            fontSize: { xs: '16px', md: '18px', lg: '22px' },
+            color: "#EAE8E1",
+            fontSize: { xs: "16px", md: "18px", lg: "22px" },
             fontWeight: 400,
-            lineHeight: '130%',
-            letterSpacing: '-0.044px',
-            maxWidth: { xs: '315px', md: '570px' },
-            margin: { xs: '0 auto 40px auto', md: '0 auto 54px auto' },
-            fontFamily: '"Chobani Serif", serif',
+            lineHeight: "130%",
+            letterSpacing: "-0.044px",
+            maxWidth: { xs: "315px", md: "570px" },
+            margin: { xs: "0 auto 40px auto", md: "0 auto 54px auto" },
           }}
         >
           {data?.subhead ||
-            'Get training tips, nutrition insights, exclusive sweeps updates, and recipes straight from the pros.'}
+            "Get training tips, nutrition insights, exclusive sweeps updates, and recipes straight from the pros."}
         </Typography>
-
-        {/* View Recipes Button */}
-        <Box sx={{ mb: { xs: '40px', md: '54px' } }}>
-          <Box
-            component="a"
-            href={data?.recipesLink || '#'}
-            sx={{
-              display: 'inline-block',
-              backgroundColor: '#F8F3E3',
-              color: '#1A3C34',
-              padding: '12px 24px',
-              borderRadius: '5px',
-              textDecoration: 'none',
-              fontSize: '14px',
-              border: '1px solid transparent',
-              transition: 'all 0.3s ease',
-              fontFamily: '"Chobani Sans", serif',
-              '&:hover': {
-                backgroundColor: 'transparent',
-                color: '#F8F3E3',
-                border: '1px solid #F8F3E3',
-              },
-            }}
-          >
-            {data?.recipesText || 'View All Recipes'}
-          </Box>
-        </Box>
-
-        {/* Form Container */}
-        <Box component="form" sx={{ textAlign: 'left' }}>
-          {/* Row 1 */}
+        <Box component="form" sx={{ textAlign: "left" }}>
           <Box
             sx={{
-              display: 'flex',
-              gap: '20px',
-              marginBottom: '20px',
-              flexWrap: 'wrap',
+              display: "flex",
+              gap: "20px",
+              marginBottom: "20px",
+              flexWrap: "wrap",
             }}
           >
-            <Box sx={{ flex: 1, minWidth: '280px',}}>
+            <Box sx={{ flex: 1, minWidth: "280px" }}>
               <Box
                 component="input"
                 type="text"
@@ -201,7 +179,7 @@ export default function GetInTheGameSection({ data }) {
                 sx={formInputSx}
               />
             </Box>
-            <Box sx={{ flex: 1, minWidth: '280px' }}>
+            <Box sx={{ flex: 1, minWidth: "280px" }}>
               <Box
                 component="input"
                 type="text"
@@ -210,17 +188,15 @@ export default function GetInTheGameSection({ data }) {
               />
             </Box>
           </Box>
-
-          {/* Row 2 */}
           <Box
             sx={{
-              display: 'flex',
-              gap: '20px',
-              marginBottom: '20px',
-              flexWrap: 'wrap',
+              display: "flex",
+              gap: "20px",
+              marginBottom: "20px",
+              flexWrap: "wrap",
             }}
           >
-            <Box sx={{ flex: 1, minWidth: '280px' }}>
+            <Box sx={{ flex: 1, minWidth: "280px" }}>
               <Box
                 component="input"
                 type="email"
@@ -233,13 +209,13 @@ export default function GetInTheGameSection({ data }) {
           {/* Row 3 */}
           <Box
             sx={{
-              display: 'flex',
-              gap: '20px',
-              marginBottom: '20px',
-              flexWrap: 'wrap',
+              display: "flex",
+              gap: "20px",
+              marginBottom: "20px",
+              flexWrap: "wrap",
             }}
           >
-            <Box sx={{ flex: 1, minWidth: '280px' }}>
+            <Box sx={{ flex: 1, minWidth: "280px" }}>
               <Box
                 component="input"
                 type="text"
@@ -252,29 +228,24 @@ export default function GetInTheGameSection({ data }) {
           {/* Age Checkbox */}
           <Box
             sx={{
-              color: '#F8F3E3',
-              display: 'flex',
-              gap: '10px',
-              alignItems: 'flex-start',
-              justifyContent: { xs: 'flex-start', md: 'center' },
-              mt: '20px',
+              color: "#F8F3E3",
+              display: "flex",
+              gap: "10px",
+              alignItems: "flex-start",
+              justifyContent: { xs: "flex-start", md: "center" },
+              mt: "20px",
             }}
           >
-            <input
-              type="checkbox"
-              id="age"
-              style={{ cursor: 'pointer' }}
-            />
+            <input type="checkbox" id="age" style={{ cursor: "pointer" }} />
             <Typography
               component="label"
               htmlFor="age"
               sx={{
-                fontSize: '13px',
+                fontSize: "13px",
                 fontWeight: 400,
-                lineHeight: '130%',
-                letterSpacing: '-0.065px',
-                cursor: 'pointer',
-                fontFamily: '"Chobani Sans", serif',
+                lineHeight: "130%",
+                letterSpacing: "-0.065px",
+                cursor: "pointer",
               }}
             >
               By checking the box, you agree that you are at least 18 years of
@@ -283,27 +254,26 @@ export default function GetInTheGameSection({ data }) {
           </Box>
 
           {/* Submit Button */}
-          <Box sx={{ textAlign: 'center', mt: '25px' }}>
+          <Box sx={{ textAlign: "center", mt: "25px" }}>
             <Box
               component="button"
               type="submit"
               sx={{
-                backgroundColor: '#F8F3E3',
-                color: '#1A3C34',
-                border: '1px solid transparent',
-                padding: '12px 40px',
-                borderRadius: '5px',
-                cursor: 'pointer',
-                fontSize: '14px',
+                backgroundColor: "#F8F3E3",
+                color: "#1A3C34",
+                border: "1px solid transparent",
+                padding: "12px 40px",
+                borderRadius: "5px",
+                cursor: "pointer",
+                fontSize: "14px",
                 fontWeight: 400,
-                lineHeight: '100%',
-                textTransform: 'capitalize',
-                transition: 'all 0.3s ease',
-                fontFamily: '"Chobani Sans", serif',
-                '&:hover': {
-                  backgroundColor: 'transparent',
-                  color: '#F8F3E3',
-                  border: '1px solid #F8F3E3',
+                lineHeight: "100%",
+                textTransform: "capitalize",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "transparent",
+                  color: "#F8F3E3",
+                  border: "1px solid #F8F3E3",
                 },
               }}
             >
