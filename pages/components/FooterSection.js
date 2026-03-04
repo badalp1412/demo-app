@@ -54,7 +54,8 @@ export default function FooterSection() {
                 fontSize: '16px',
                 lineHeight: '130%',
                 paddingRight: '20px',
-                '&::placeholder': { color: 'rgba(255, 255, 255, 0.6)' },
+                letterSpacing: '-0.032px',
+                '&::placeholder': { color: '#FFFFFF80' },
               }}
             />
             <Box
