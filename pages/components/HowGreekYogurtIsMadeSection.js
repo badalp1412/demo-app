@@ -1,14 +1,33 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 
 export default function HowGreekYogurtIsMadeSection() {
   const [showContent, setShowContent] = useState(false);
+
+  // Responsive (md = 900)
+  const [isMobile, setIsMobile] = useState(false);
 
   // Mobile carousel index
   const [activeStep, setActiveStep] = useState(0);
 
   // Image-first: fade in step content after step image is ready
   const [stepReady, setStepReady] = useState(false);
+
+  // Measure carousel width for mobile layout
+  const carouselViewportRef = useRef(null);
+  const [carouselWidth, setCarouselWidth] = useState(0);
+
+  // ----- MOBILE FIGMA TUNING -----
+  // Left inset so the card is not flush to left (matches Figma)
+  const MOBILE_LEFT_INSET = 24; // px (≈ theme spacing 3)
+  // Small strip of next blue card visible on right (matches Figma)
+  const MOBILE_BLUE_PEEK = 24; // px
+  // Cream gap between cards (matches Figma feel)
+  const MOBILE_GAP = 18; // px
+  // Arrow circle + how much it is clipped on the right edge (matches Figma)
+  const ARROW_SIZE = 56; // px
+  const ARROW_CLIP = 16; // px (push outside so it’s clipped)
+  // --------------------------------
 
   const steps = useMemo(
     () => [
@@ -40,10 +59,27 @@ export default function HowGreekYogurtIsMadeSection() {
     []
   );
 
-  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 900 : true;
+  // Detect mobile (standard MUI md breakpoint)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const mql = window.matchMedia('(max-width:899px)');
+    const update = () => setIsMobile(mql.matches);
+
+    update();
+    if (mql.addEventListener) mql.addEventListener('change', update);
+    else mql.addListener(update);
+
+    return () => {
+      if (mql.removeEventListener) mql.removeEventListener('change', update);
+      else mql.removeListener(update);
+    };
+  }, []);
 
   // Preload hero decoration (image-first)
   useEffect(() => {
+    setShowContent(false);
+
     const hero = new Image();
     hero.src = isMobile
       ? '/images/how-made-hero-mob.svg'
@@ -54,8 +90,36 @@ export default function HowGreekYogurtIsMadeSection() {
 
     const timer = setTimeout(() => setShowContent(true), 350);
     return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isMobile]);
+
+  // Measure carousel viewport width (mobile)
+  useEffect(() => {
+    if (!isMobile) return;
+    if (!carouselViewportRef.current) return;
+
+    const el = carouselViewportRef.current;
+
+    const update = () => {
+      const rect = el.getBoundingClientRect();
+      setCarouselWidth(rect.width);
+    };
+
+    update();
+
+    let ro;
+    if (typeof ResizeObserver !== 'undefined') {
+      ro = new ResizeObserver(() => update());
+      ro.observe(el);
+    } else if (typeof window !== 'undefined') {
+      window.addEventListener('resize', update);
+    }
+
+    return () => {
+      if (ro) ro.disconnect();
+      else if (typeof window !== 'undefined')
+        window.removeEventListener('resize', update);
+    };
+  }, [isMobile]);
 
   // Preload active step image (image-first per step)
   useEffect(() => {
@@ -75,64 +139,91 @@ export default function HowGreekYogurtIsMadeSection() {
     setActiveStep((prev) => (prev + 1) % steps.length);
   };
 
-  const StepCard = ({ item }) => (
+  const StepCard = ({ item, mobile }) => (
     <Box
       sx={{
         backgroundColor: '#0C77D8',
         borderRadius: 2,
-        px: { xs: 2.5, md: 3 },
-        py: { xs: 3, md: 3.5 },
+        px: mobile ? 3 : 3,
+        pt: mobile ? 5 : 3.5,
+        pb: mobile ? 5 : 3.5,
         textAlign: 'center',
         color: '#F8F3E3',
-        minHeight: { xs: 260, md: 280 },
+        minHeight: mobile ? 610 : 340,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
+        alignItems: 'center',
       }}
     >
-      {/* Image (user will replace) */}
       <Box
         component="img"
         src={item.img}
         alt=""
         sx={{
           width: '100%',
-          height: { xs: 120, md: 130 },
+          maxWidth: mobile ? 300 : 220,
+          height: mobile ? 300 : 150,
           objectFit: 'contain',
-          mb: 2,
+          mb: mobile ? 3.5 : 2.2,
+          display: 'block',
         }}
       />
 
       <Typography
-        variant="d2c_h5"
         component="p"
-        sx={{ m: 0, mb: 0.8, color: '#F8F3E3', opacity: 0.95 }}
+        sx={{
+          m: 0,
+          mb: mobile ? 1 : 0.6,
+          color: '#F8F3E3',
+          opacity: 0.98,
+          fontFamily: 'Chobani-Serif-Regular',
+          fontSize: mobile ? '20px' : '14px',
+          lineHeight: 1.1,
+        }}
       >
         {item.stepLabel}
       </Typography>
 
       <Typography
-        variant="d2c_h6"
         component="p"
         sx={{
           m: 0,
-          mb: 1.2,
+          mb: mobile ? 2.6 : 1.4,
           color: '#F8F3E3',
-          fontFamily: 'Chobani-Serif-SemiBold',
+          fontFamily: 'Chobani-Serif-Regular',
+          fontSize: mobile ? '34px' : '18px',
+          lineHeight: 1.05,
         }}
       >
         {item.title}
       </Typography>
 
       <Typography
-        variant="d2c_p2"
         component="p"
-        sx={{ m: 0, color: '#F8F3E3', opacity: 0.95 }}
+        sx={{
+          m: 0,
+          color: '#F8F3E3',
+          opacity: 0.98,
+          fontFamily: 'Chobani-Serif-Regular',
+          fontSize: mobile ? '18px' : '14px',
+          lineHeight: 1.4,
+          maxWidth: mobile ? 300 : 220,
+        }}
       >
         {item.desc}
       </Typography>
     </Box>
   );
+
+  // MOBILE: compute card width so:
+  // [LEFT_INSET] + [CARD] + [GAP] + [BLUE_PEEK] == viewportWidth
+  const effectiveMobileWidth = Math.max(0, carouselWidth - MOBILE_LEFT_INSET);
+  const mobileCardWidth = Math.max(
+    280,
+    effectiveMobileWidth - (MOBILE_BLUE_PEEK + MOBILE_GAP)
+  );
+  const mobileTranslateX = -(activeStep * (mobileCardWidth + MOBILE_GAP));
 
   return (
     <Container
@@ -144,25 +235,19 @@ export default function HowGreekYogurtIsMadeSection() {
         width: '100%',
         overflow: 'hidden',
         backgroundColor: '#1A3C34',
-        px: { xs: 3, sm: 6, lg: 8 },
-        py: { xs: 8, md: 10 },
 
-        // Mobile hero decoration (soccer ball + stripes)
-        '&::before': {
-          content: '""',
-          display: { xs: 'block', md: 'none' },
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: 280,
-          backgroundImage: 'url(/images/how-made-hero-mob.svg)',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-          zIndex: 0,
-          pointerEvents: 'none',
+        // Hero decoration
+        backgroundImage: {
+          xs: 'url(/images/how-made-hero-mob.svg)',
+          md: 'url(/images/how-made-hero-desktop.svg)',
         },
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top',
+
+        // IMPORTANT: on mobile, no side padding so the cream panel can be full-width
+        px: { xs: 0, md: 6, lg: 8 },
+        py: { xs: 8, md: 10 },
       }}
     >
       <Box
@@ -175,115 +260,116 @@ export default function HowGreekYogurtIsMadeSection() {
           transition: 'opacity 0.4s ease-in',
         }}
       >
-        {/* Section Title */}
-        <Typography
-          variant="d2c_h1"
-          component="h2"
-          align="center"
-          sx={{
-            color: '#F8F3E3',
-            mb: { xs: 3, md: 4 },
-          }}
-        >
-          How All our Greek <br />
-          Yogurt is Made
-        </Typography>
-
-        {/* Mobile: matches Figma (white text on green above carousel) */}
-        <Box sx={{ display: { xs: 'block', md: 'none' }, textAlign: 'center', mb: 3 }}>
+        {/* Title wrapper with padding only on mobile */}
+        <Box sx={{ px: { xs: 3, md: 0 } }}>
           <Typography
-            variant="d2c_h2"
-            component="h3"
-            sx={{ color: '#F8F3E3', mb: 1.2, fontFamily: 'Chobani-Serif-Regular' }}
+            variant="d2c_h1"
+            component="h2"
+            align="center"
+            sx={{
+              color: '#F8F3E3',
+              mb: { xs: 3.5, md: 4 },
+            }}
           >
-            No subs, no shortcuts
-          </Typography>
-          <Typography
-            variant="d2c_p2"
-            component="p"
-            sx={{ color: '#EAE8E1', opacity: 0.92, m: 0 }}
-          >
-            Great nutrition comes from a process.
-            <br />
-            And we’ve spent decades perfecting ours.
+            How All our Greek <br />
+            Yogurt is Made
           </Typography>
         </Box>
 
-        {/* Desktop panel (beige like desktop layout) */}
+        {/* Cream panel */}
         <Box
           sx={{
-            display: { xs: 'none', md: 'block' },
             backgroundColor: '#F8F3E3',
-            borderRadius: 2.5,
-            px: { md: 6 },
-            py: { md: 5 },
+
+            // Mobile: full width cream (no visible green sides)
+            borderRadius: { xs: 0, md: 2.5 },
+
+            // Desktop: panel centered in maxWidth
+            mx: { xs: 0, md: 'auto' },
+            px: { xs: 0, md: 6 },
+            pt: { xs: 4, md: 5 },
+            pb: { xs: 4, md: 4.5 },
           }}
         >
-          <Typography
-            variant="d2c_h2"
-            component="h3"
-            align="center"
-            sx={{ color: '#1A3C34', mb: 1.2 }}
-          >
-            No subs, no shortcuts
-          </Typography>
-          <Typography
-            variant="d2c_p2"
-            component="p"
-            align="center"
-            sx={{ color: '#1A3C34', opacity: 0.9, mb: 4 }}
-          >
-            Great nutrition comes from a process.
-            <br />
-            And we’ve spent decades perfecting ours.
-          </Typography>
+          {/* Panel heading/subcopy with padding on mobile */}
+          <Box sx={{ px: { xs: 3, md: 0 } }}>
+            <Typography
+              variant="d2c_h2"
+              component="h3"
+              align="center"
+              sx={{
+                color: '#1A3C34',
+                mb: 1,
+                fontFamily: 'Chobani-Serif-Regular',
+              }}
+            >
+              No subs, no shortcuts
+            </Typography>
 
+            <Typography
+              variant="d2c_p2"
+              component="p"
+              align="center"
+              sx={{
+                color: '#1A3C34',
+                opacity: 0.9,
+                mb: { xs: 3, md: 4 },
+                maxWidth: 720,
+                mx: 'auto',
+              }}
+            >
+              Great nutrition comes from a process.
+              <br />
+              And we’ve spent decades perfecting ours.
+            </Typography>
+          </Box>
+
+          {/* DESKTOP grid */}
           <Box
             sx={{
-              display: 'grid',
-              gridTemplateColumns: { md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' },
-              gap: 2.5,
+              display: { xs: 'none', md: 'grid' },
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: 3,
             }}
           >
             {steps.map((s) => (
-              <StepCard key={s.stepLabel} item={s} />
+              <StepCard key={s.stepLabel} item={s} mobile={false} />
             ))}
           </Box>
 
-          <Typography
-            variant="d2c_h5"
-            component="p"
-            sx={{ color: '#1A3C34', opacity: 0.75, mt: 3.5, mb: 0 }}
-          >
-            † According to the FDA, no significant difference has been found between milk derived from rBST-treated and
-            non-rBST-treated cows.
-          </Typography>
-        </Box>
-
-        {/* MOBILE CAROUSEL (Figma arrow behavior) */}
-        <Box sx={{ display: { xs: 'block', md: 'none' } }}>
-          <Box
-            sx={{
-              backgroundColor: '#F8F3E3',
-              borderRadius: 2.5,
-              px: 2.5,
-              py: 3,
-              position: 'relative',
-              maxWidth: 360,
-              mx: 'auto',
-            }}
-          >
-            {/* Step card area */}
+          {/* MOBILE carousel (Figma: cream full width, arrow clipped at right, next card peeks) */}
+          <Box sx={{ display: { xs: 'block', md: 'none' } }}>
             <Box
+              ref={carouselViewportRef}
               sx={{
                 position: 'relative',
-                opacity: stepReady ? 1 : 0,
-                transition: 'opacity 0.35s ease-in',
+                width: '100%',
+                overflow: 'hidden', // clips the arrow on the right like Figma
               }}
             >
-              <StepCard item={steps[activeStep]} />
+              <Box
+                sx={{
+                  display: 'flex',
+                  gap: `${MOBILE_GAP}px`,
+                  paddingLeft: `${MOBILE_LEFT_INSET}px`, // left inset to match Figma
+                  transform: `translateX(${mobileTranslateX}px)`,
+                  transition: 'transform 0.55s ease',
+                  opacity: stepReady ? 1 : 0,
+                  transitionProperty: 'transform, opacity',
+                  willChange: 'transform',
+                }}
+              >
+                {steps.map((s, idx) => (
+                  <Box
+                    key={`${s.stepLabel}-${idx}`}
+                    sx={{ flex: `0 0 ${mobileCardWidth}px` }}
+                  >
+                    <StepCard item={s} mobile />
+                  </Box>
+                ))}
+              </Box>
 
-              {/* Arrow button overlay */}
+              {/* Arrow button (Figma: pushed beyond right edge so it’s clipped, overlaps blue peek) */}
               <Box
                 component="button"
                 type="button"
@@ -291,11 +377,11 @@ export default function HowGreekYogurtIsMadeSection() {
                 aria-label="Next step"
                 sx={{
                   position: 'absolute',
-                  right: -18,
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  width: 44,
-                  height: 44,
+                  right: `-${ARROW_CLIP}px`,
+                  width: `${ARROW_SIZE}px`,
+                  height: `${ARROW_SIZE}px`,
                   borderRadius: '50%',
                   border: 'none',
                   backgroundColor: '#F8F3E3',
@@ -304,28 +390,39 @@ export default function HowGreekYogurtIsMadeSection() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  zIndex: 5,
                 }}
               >
-                <Typography variant="d2c_h4" component="span" sx={{ color: '#1A3C34', lineHeight: 1 }}>
+                <Typography
+                  component="span"
+                  sx={{
+                    color: '#1A3C34',
+                    fontSize: '24px',
+                    lineHeight: 1,
+                    fontFamily: 'Chobani-Serif-Regular',
+                  }}
+                >
                   →
                 </Typography>
               </Box>
             </Box>
+          </Box>
 
-            {/* Footnote */}
+          {/* Footnote INSIDE cream panel at bottom-left (matches Figma) */}
+          <Box sx={{ px: { xs: 3, md: 0 } }}>
             <Typography
               variant="d2c_h5"
               component="p"
               sx={{
                 color: '#1A3C34',
                 opacity: 0.75,
-                mt: 2.2,
+                mt: { xs: 2.5, md: 3.5 },
                 mb: 0,
-                lineHeight: 1.35,
+                textAlign: 'left',
               }}
             >
-              † According to the FDA, no significant difference has been found between milk derived from rBST-treated and
-              non-rBST-treated cows.
+              † According to the FDA, no significant difference has been found
+              between milk derived from rBST-treated and non-rBST-treated cows.
             </Typography>
           </Box>
         </Box>
