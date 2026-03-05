@@ -38,6 +38,7 @@ export default function FooterSection() {
               display: 'flex',
               pb: '10px',
               maxWidth: '400px',
+              borderBottom: '1px solid #F8F3E3',
             }}
           >
             <Box
@@ -54,7 +55,8 @@ export default function FooterSection() {
                 fontSize: '16px',
                 lineHeight: '130%',
                 paddingRight: '20px',
-                '&::placeholder': { color: 'rgba(255, 255, 255, 0.6)' },
+                letterSpacing: '-0.032px',
+                '&::placeholder': { color: '#FFFFFF80' },
               }}
             />
             <Box
@@ -81,13 +83,14 @@ export default function FooterSection() {
               fontSize: '12px',
               lineHeight: '130%',
               mt: '20px',
+              marginLeft: '26px',
             }}
           >
             By checking the box, you agree that you are at least 18 years of
             age.
           </Typography>
           {/* Social Media Icons */}
-          <Box sx={{ display: 'flex', gap: '20px', mb: '20px', mt: '50px' }}>
+          <Box sx={{ display: 'flex', gap: '25px', mt: { xs: '40px', md: '50px' }}}>
             <svg
               viewBox="0 0 24 24"
               width="20"
@@ -161,7 +164,7 @@ export default function FooterSection() {
           sx={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: { xs: '30px', md: '60px' },
+            gap: { xs: '40px', md: '50px' },
           }}
         >
           <Box>
@@ -175,18 +178,21 @@ export default function FooterSection() {
                 textTransform: 'capitalize',
                 mb: '15px',
                 cursor: 'pointer',
-                m: '0 0 15px 0',
+                m: '0 0 20px 0',
               }}
             >
               Chobani Café
             </Typography>
             <Typography
               sx={{
-                fontSize: '0.9rem',
-                color: 'rgba(255, 255, 255, 0.9)',
-                cursor: 'pointer',
-                m: '0 0 12px 0',
+                color: '#F8F3E3',
                 fontFamily: '"Chobani Sans", sans-serif',
+                fontSize: '14px',
+                lineHeight: '100%',
+                textTransform: 'capitalize',
+                mb: '15px',
+                cursor: 'pointer',
+                m: '0 0 20px 0',
               }}
             >
               Foodservice
@@ -203,18 +209,21 @@ export default function FooterSection() {
                 textTransform: 'capitalize',
                 mb: '15px',
                 cursor: 'pointer',
-                m: '0 0 15px 0',
+                m: '0 0 20px 0',
               }}
             >
               Careers
             </Typography>
             <Typography
               sx={{
-                fontSize: '0.9rem',
-                color: 'rgba(255, 255, 255, 0.9)',
-                cursor: 'pointer',
-                m: '0 0 12px 0',
+                color: '#F8F3E3',
                 fontFamily: '"Chobani Sans", sans-serif',
+                fontSize: '14px',
+                lineHeight: '100%',
+                textTransform: 'capitalize',
+                mb: '15px',
+                cursor: 'pointer',
+                m: '0 0 20px 0',
               }}
             >
               Alumni
@@ -231,19 +240,21 @@ export default function FooterSection() {
                 textTransform: 'capitalize',
                 mb: '15px',
                 cursor: 'pointer',
-                m: '0 0 15px 0',
-                fontFamily: '"Chobani Sans", sans-serif',
+                m: '0 0 20px 0',
               }}
             >
               Consumer Care
             </Typography>
             <Typography
               sx={{
-                fontSize: '0.9rem',
-                color: 'rgba(255, 255, 255, 0.9)',
-                cursor: 'pointer',
-                m: '0 0 12px 0',
+                color: '#F8F3E3',
                 fontFamily: '"Chobani Sans", sans-serif',
+                fontSize: '14px',
+                lineHeight: '100%',
+                textTransform: 'capitalize',
+                mb: '15px',
+                cursor: 'pointer',
+                m: '0 0 20px 0',
               }}
             >
               Chobani News
@@ -261,7 +272,10 @@ export default function FooterSection() {
             minWidth: '240px',
             height: 'fit-content',
             cursor: 'pointer',
-            border: '1px solid rgba(255,255,255,0.2)',
+            // border: '1px solid rgba(255,255,255,0.2)',
+            marginLeft: { xs: '0px', md: '8px' },
+            borderRadius: { xs: '4px', md: '0' },
+            border: { xs: '1px solid #F8F3E3', md: 'none' },
           }}
         >
           <Typography component="span" sx={{ fontSize: '14px', fontFamily: '"Chobani Sans", sans-serif', }}>
@@ -291,7 +305,7 @@ export default function FooterSection() {
       {/* Bottom Legal Section */}
       <Box
         sx={{
-          paddingTop: '30px',
+          paddingTop: { xs: '40px', md: '50px' },
         }}
       >
         <Typography
@@ -314,7 +328,7 @@ export default function FooterSection() {
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
-            gap: '15px',
+            gap: { xs: '6px', md: '10px' },
             color: '#F8F3E3',
             fontFamily: '"Chobani Sans", serif',
             fontSize: '12px',
@@ -347,7 +361,7 @@ export default function FooterSection() {
                   sx={{
                     fontSize: '12px',
                     color: 'rgba(255, 255, 255, 0.3)',
-                    marginLeft: '15px',
+                    marginLeft: { xs: '6px', md: '10px' },
                   }}
                 >
                   |
