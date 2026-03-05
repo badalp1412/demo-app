@@ -34,25 +34,25 @@ export default function HowGreekYogurtIsMadeSection() {
       {
         stepLabel: 'Step 1:',
         title: 'Farm-fresh milk sourcing',
-        desc: 'We use locally sourced farm fresh milk from cows not treated with rBST†.',
+        desc: 'To craft Chobani Greek Yogurt, we start with farm-fresh milk. We use locally sourced farm fresh milk from cows not treated with rBST†.',
         img: '/images/how-made-step1.svg',
       },
       {
         stepLabel: 'Step 2:',
         title: 'Traditional fermentation',
-        desc: 'We ferment with live and active cultures to create that classic yogurt taste.',
+        desc: 'We ferment the milk traditionally with live and active cultures, delivering billions of probiotics in every cup.',
         img: '/images/how-made-step2.svg',
       },
       {
         stepLabel: 'Step 3:',
         title: 'Authentic straining method',
-        desc: 'Our generations-old straining process makes it thick, creamy, and delicious.',
+        desc: 'A generations-old method naturally increases protein. No protein powders, nothing artificial.',
         img: '/images/how-made-step3.svg',
       },
       {
         stepLabel: 'Step 4:',
         title: 'High protein, naturally',
-        desc: 'Strained the real way—no powders. Just real protein from real milk.',
+        desc: 'Velvety and smooth. Every spoonful (or sip!) tastes like real food because it is. ',
         img: '/images/how-made-step4.svg',
       },
     ],
@@ -143,10 +143,9 @@ export default function HowGreekYogurtIsMadeSection() {
     <Box
       sx={{
         backgroundColor: '#0C77D8',
-        borderRadius: 2,
-        px: mobile ? 3 : 3,
-        pt: mobile ? 5 : 3.5,
-        pb: mobile ? 5 : 3.5,
+        borderRadius: '4px',
+        px: mobile ? 3 : '20px',
+        py: mobile ? 5 : '40px',
         textAlign: 'center',
         color: '#F8F3E3',
         minHeight: mobile ? 610 : 340,
@@ -163,9 +162,9 @@ export default function HowGreekYogurtIsMadeSection() {
         sx={{
           width: '100%',
           maxWidth: mobile ? 300 : 220,
-          height: mobile ? 300 : 150,
+          height: mobile ? 300 : '176px',
           objectFit: 'contain',
-          mb: mobile ? 3.5 : 2.2,
+          mb: mobile ? 3.5 : '29px',
           display: 'block',
         }}
       />
@@ -175,11 +174,12 @@ export default function HowGreekYogurtIsMadeSection() {
         sx={{
           m: 0,
           mb: mobile ? 1 : 0.6,
-          color: '#F8F3E3',
-          opacity: 0.98,
-          fontFamily: 'Chobani-Serif-Regular',
-          fontSize: mobile ? '20px' : '14px',
-          lineHeight: 1.1,
+          color: '#E8E6DF',
+          fontFamily: '"Chobani Serif", sans-serif', 
+          fontSize: mobile ? '20px' : '24px',
+          lineHeight: '110%',
+          fontWeight: '400 !important',
+          letterSpacing: '-0.36px',
         }}
       >
         {item.stepLabel}
@@ -190,10 +190,13 @@ export default function HowGreekYogurtIsMadeSection() {
         sx={{
           m: 0,
           mb: mobile ? 2.6 : 1.4,
-          color: '#F8F3E3',
-          fontFamily: 'Chobani-Serif-Regular',
-          fontSize: mobile ? '34px' : '18px',
-          lineHeight: 1.05,
+          color: '#E8E6DF',
+          fontFamily: '"Chobani Serif", sans-serif', 
+          fontSize: mobile ? '20px' : '24px',
+          lineHeight: '110%',
+          fontWeight: '400 !important',
+          letterSpacing: '-0.36px',
+          marginBottom: mobile ? '16px' : '29px',
         }}
       >
         {item.title}
@@ -203,12 +206,12 @@ export default function HowGreekYogurtIsMadeSection() {
         component="p"
         sx={{
           m: 0,
-          color: '#F8F3E3',
-          opacity: 0.98,
-          fontFamily: 'Chobani-Serif-Regular',
-          fontSize: mobile ? '18px' : '14px',
-          lineHeight: 1.4,
-          maxWidth: mobile ? 300 : 220,
+          color: '#fff',
+          fontFamily: '"Chobani Serif", sans-serif', 
+          fontSize: mobile ? '14px' : '16px',
+          lineHeight: '130%',
+          fontWeight: '400 !important',
+          letterSpacing: '-0.032px',
         }}
       >
         {item.desc}
@@ -246,15 +249,16 @@ export default function HowGreekYogurtIsMadeSection() {
         backgroundPosition: 'center top',
 
         // IMPORTANT: on mobile, no side padding so the cream panel can be full-width
-        px: { xs: 0, md: 6, lg: 8 },
-        py: { xs: 8, md: 10 },
+        px: { xs: 0, md: 6, lg: '50px' },
+        pt: { xs: 8, md: '70px' },
+        pb: { xs: '20px' },
       }}
     >
       <Box
         sx={{
           position: 'relative',
           zIndex: 1,
-          maxWidth: 1180,
+          maxWidth: 1628,
           mx: 'auto',
           opacity: showContent ? 1 : 0,
           transition: 'opacity 0.4s ease-in',
@@ -268,7 +272,10 @@ export default function HowGreekYogurtIsMadeSection() {
             align="center"
             sx={{
               color: '#F8F3E3',
-              mb: { xs: 3.5, md: 4 },
+              mb: { xs: 3.5, md: '77px' },
+              fontWeight: '400 !important',
+              fontFamily: '"Chobani Serif",serif',
+              fontSize: { xs: '45px', md: '80px' },
             }}
           >
             How All our Greek <br />
@@ -282,13 +289,13 @@ export default function HowGreekYogurtIsMadeSection() {
             backgroundColor: '#F8F3E3',
 
             // Mobile: full width cream (no visible green sides)
-            borderRadius: { xs: 0, md: 2.5 },
+            borderRadius: { xs: 0, md: '16px' },
 
             // Desktop: panel centered in maxWidth
             mx: { xs: 0, md: 'auto' },
             px: { xs: 0, md: 6 },
-            pt: { xs: 4, md: 5 },
-            pb: { xs: 4, md: 4.5 },
+            pt: { xs: 4, md: '70px' },
+            pb: { xs: 4, md: '64px' },
           }}
         >
           {/* Panel heading/subcopy with padding on mobile */}
@@ -300,7 +307,10 @@ export default function HowGreekYogurtIsMadeSection() {
               sx={{
                 color: '#1A3C34',
                 mb: 1,
-                fontFamily: 'Chobani-Serif-Regular',
+                fontWeight: '400 !important',
+                fontFamily: '"Chobani Serif",serif',
+                lineHeight: '100%',
+                fontSize: { xs: '45px', md: '80px' },
               }}
             >
               No subs, no shortcuts
@@ -312,13 +322,16 @@ export default function HowGreekYogurtIsMadeSection() {
               align="center"
               sx={{
                 color: '#1A3C34',
-                opacity: 0.9,
-                mb: { xs: 3, md: 4 },
-                maxWidth: 720,
+                my: { xs: 3, md: '50px' },
+                fontFamily: '"Chobani Serif",serif',
+                maxWidth: '100%',
                 mx: 'auto',
+                lineHeight: '130%',
+                fontWeight: 400,
+                fontSize: { xs: '18px', md: '22px' },
               }}
             >
-              Great nutrition comes from a process.
+              At Chobani, we believe nutrition comes from real ingredients and craftsmanship. 
               <br />
               And we’ve spent decades perfecting ours.
             </Typography>
@@ -329,7 +342,7 @@ export default function HowGreekYogurtIsMadeSection() {
             sx={{
               display: { xs: 'none', md: 'grid' },
               gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: 3,
+              gap: '20px',
             }}
           >
             {steps.map((s) => (
@@ -382,7 +395,7 @@ export default function HowGreekYogurtIsMadeSection() {
                   right: `-${ARROW_CLIP}px`,
                   width: `${ARROW_SIZE}px`,
                   height: `${ARROW_SIZE}px`,
-                  borderRadius: '50%',
+                  borderRadius: '50% 0% 0px 50%',
                   border: 'none',
                   backgroundColor: '#F8F3E3',
                   cursor: 'pointer',
@@ -391,6 +404,7 @@ export default function HowGreekYogurtIsMadeSection() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   zIndex: 5,
+                  paddingTop: '4px',
                 }}
               >
                 <Typography
@@ -402,31 +416,41 @@ export default function HowGreekYogurtIsMadeSection() {
                     fontFamily: 'Chobani-Serif-Regular',
                   }}
                 >
-                  →
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="19" viewBox="0 0 24 19" fill="none">
+                    <path d="M22.7579 9.48542L1.00073 9.48543M22.7579 9.48542L14.0549 1.00014M22.7579 9.48542L14.0549 17.9707" stroke="#1A3C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
                 </Typography>
               </Box>
             </Box>
           </Box>
-
-          {/* Footnote INSIDE cream panel at bottom-left (matches Figma) */}
-          <Box sx={{ px: { xs: 3, md: 0 } }}>
+        </Box>
+      </Box>
+      {/* Footnote INSIDE cream panel at bottom-left (matches Figma) */}
+          <Box sx={{ 
+            px: { xs: 3, md: 0 }, 
+            maxWidth: { xs: '100%', md: 1628 },
+            margin: { xs: '16px auto 0', md: '0 auto 0' },
+            }}>
             <Typography
               variant="d2c_h5"
               component="p"
               sx={{
-                color: '#1A3C34',
-                opacity: 0.75,
-                mt: { xs: 2.5, md: 3.5 },
+                color: '#fff',
+                mt: { xs: 2.5, md: '20px' },
                 mb: 0,
                 textAlign: 'left',
+                fontWeight: '400 !important',
+                fontFamily: '"Chobani Serif",sans-serif',
+                fontSize: { xs: '10px'},
+                lineHeight: '130%',
+                letterSpacing: '-0.02px',
+                maxWidth: '296px',
               }}
             >
               † According to the FDA, no significant difference has been found
               between milk derived from rBST-treated and non-rBST-treated cows.
             </Typography>
           </Box>
-        </Box>
-      </Box>
     </Container>
   );
 }
