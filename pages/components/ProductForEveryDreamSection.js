@@ -21,6 +21,7 @@ export default function ProductForEveryDreamSection({ data }) {
     () => [
       {
         key: "greek",
+        size: 80,
         tabBg: CREAM,
         tabFg: "#1A3C34",
         panelBg: CREAM,
@@ -53,6 +54,7 @@ export default function ProductForEveryDreamSection({ data }) {
       },
       {
         key: "highProtein",
+        size: 80,
         tabBg: "#082B49",
         tabFg: "#F8F3E3",
         panelBg: "#082B49",
@@ -85,6 +87,7 @@ export default function ProductForEveryDreamSection({ data }) {
       },
       {
         key: "zeroSugar",
+        size: 80,
         tabBg: "#0C77D8",
         tabFg: "#F8F3E3",
         panelBg: "#0C77D8",
@@ -116,6 +119,7 @@ export default function ProductForEveryDreamSection({ data }) {
       },
       {
         key: "lessSugar",
+        size: 80,
         tabBg: "#C9D9E8",
         tabFg: "#1A3C34",
         panelBg: "#C9D9E8",
@@ -148,6 +152,7 @@ export default function ProductForEveryDreamSection({ data }) {
       },
       {
         key: "flip",
+        size: 80,
         tabBg: "#E1261C",
         tabFg: "#F8F3E3",
         panelBg: "#E1261C",
@@ -255,7 +260,7 @@ export default function ProductForEveryDreamSection({ data }) {
     <Box
       sx={{
         display: "flex",
-        gap: { xs: 1.4, md: 2 },
+        gap: { xs: 3.5, md: 2 },
         flexWrap: "wrap",
         alignItems: "center",
       }}
@@ -282,7 +287,6 @@ export default function ProductForEveryDreamSection({ data }) {
       {/* ✅ Tabs row (FIXED: continuous, no gaps) */}
       <Box
         sx={{
-          maxWidth: 1120,
           mx: "auto",
           display: "flex",
           alignItems: "stretch",
@@ -302,15 +306,13 @@ export default function ProductForEveryDreamSection({ data }) {
               sx={{
                 // ✅ KEY FIX (removes gaps)
                 width: "100%",
-                flex: t.key === "greek" ? "0 0 260px" : "1 1 0",
-
+                flex: "1 1 0",
                 border: "none",
                 cursor: "pointer",
                 backgroundColor: t.tabBg,
                 color: t.tabFg,
                 textAlign: "center",
                 outline: "none",
-
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -374,7 +376,6 @@ export default function ProductForEveryDreamSection({ data }) {
       {/* ✅ Panel (overlaps under tabs like Figma) */}
       <Box
         sx={{
-          maxWidth: 1120,
           mx: "auto",
           mt: "-10px", // overlap so tabs sit on panel
           // borderRadius: 24,
@@ -400,7 +401,7 @@ export default function ProductForEveryDreamSection({ data }) {
           <Box
             sx={{
               backgroundColor: CREAM,
-              borderRadius: 12,
+              // borderRadius: 12,
               p: 2.5,
               display: "flex",
               alignItems: "center",
@@ -457,7 +458,7 @@ export default function ProductForEveryDreamSection({ data }) {
               Nutritional Highlights:
             </Typography>
 
-            {renderHighlights(getTab(activeKey), 56)}
+            {renderHighlights(getTab(activeKey), 90)}
 
             <Box
               sx={{
@@ -505,7 +506,6 @@ export default function ProductForEveryDreamSection({ data }) {
                     }`,
                     borderRadius: 1.5,
                     overflow: "hidden",
-                    width: 250,
                     mt: 0.4,
                   }}
                 >
@@ -747,7 +747,7 @@ export default function ProductForEveryDreamSection({ data }) {
                       Nutritional Highlights:
                     </Typography>
 
-                    {renderHighlights(t, 48)}
+                    {renderHighlights(t, t.size)}
 
                     <Typography
                       variant="d2c_p2"
@@ -793,7 +793,6 @@ export default function ProductForEveryDreamSection({ data }) {
       disableGutters
       maxWidth={false}
       sx={{
-        width: "100%",
         overflowX: "hidden",
         backgroundColor: GREEN_BG,
         backgroundImage: {
@@ -809,7 +808,7 @@ export default function ProductForEveryDreamSection({ data }) {
     >
       <Box
         sx={{
-          maxWidth: 1180,
+          maxWidth: 1728,
           mx: "auto",
           opacity: showSection ? 1 : 0,
           transition: "opacity 0.4s ease-in",
