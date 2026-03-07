@@ -3,14 +3,14 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Chobani-Serif-Regular',
+   fontFamily: '"Chobani Serif", serif',
     /**
      * INFO: New font changes tags
      */
     d2c_h1: {
       fontFamily: '"Chobani Serif", serif',
       '@media all and (max-width: 1199px)': {
-        fontSize: '3.1rem',
+        fontSize: '45px',
         lineHeight: '1',
         letterSpacing: '-1px',
       },
@@ -106,7 +106,7 @@ const theme = createTheme({
       },
     },
     d2c_h5: {
-      fontFamily: 'Chobani-Sans-Regular',
+      fontFamily: '"Chobani Serif", serif',
       '@media all and (max-width: 899px)': {
         fontSize: '0.75rem',
         lineHeight: '1',
@@ -196,7 +196,7 @@ const theme = createTheme({
       },
     },
     d2c_p: {
-      fontFamily: 'Chobani-Serif-Regular',
+      fontFamily: '"Chobani Serif", serif',
       '@media all and (max-width: 1199px)': {
         fontSize: '1rem',
         lineHeight: '1.3',
@@ -209,7 +209,7 @@ const theme = createTheme({
       },
     },
     d2c_p2: {
-      fontFamily: 'Chobani-Serif-Regular',
+      fontFamily: '"Chobani Serif", serif',
       '@media all and (max-width: 899px)': {
         fontSize: '0.9rem',
         lineHeight: '1.2',
@@ -227,7 +227,7 @@ const theme = createTheme({
       },
     },
     d2c_NavBar: {
-      fontFamily: 'Chobani-Serif-Regular',
+      fontFamily: '"Chobani Serif", serif',
       '@media all and (max-width: 899px)': {
         fontSize: '1.4rem',
       },
@@ -251,7 +251,7 @@ const theme = createTheme({
       },
     },
     d2c_NavItems: {
-      fontFamily: 'Chobani-Serif-Regular',
+      fontFamily: '"Chobani Serif", serif',
       '@media all and (max-width: 899px)': {
         fontSize: '1.3rem',
       },

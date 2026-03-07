@@ -23,10 +23,10 @@ export default function HowGreekYogurtIsMadeSection() {
   // Small strip of next blue card visible on right (matches Figma)
   const MOBILE_BLUE_PEEK = 24; // px
   // Cream gap between cards (matches Figma feel)
-  const MOBILE_GAP = 18; // px
+  const MOBILE_GAP = 10; // px
   // Arrow circle + how much it is clipped on the right edge (matches Figma)
   const ARROW_SIZE = 56; // px
-  const ARROW_CLIP = 16; // px (push outside so it’s clipped)
+  const ARROW_CLIP = 20; // px (push outside so it’s clipped)
   // --------------------------------
 
   const steps = useMemo(
@@ -145,10 +145,10 @@ export default function HowGreekYogurtIsMadeSection() {
         backgroundColor: "#0C77D8",
         borderRadius: "4px",
         px: mobile ? 3 : "20px",
-        py: mobile ? 5 : "40px",
+        py: mobile ? "50px" : "40px",
         textAlign: "center",
         color: "#F8F3E3",
-        minHeight: mobile ? 610 : 340,
+        minHeight: mobile ? 464 : 340,
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
@@ -161,10 +161,10 @@ export default function HowGreekYogurtIsMadeSection() {
         alt=""
         sx={{
           width: "100%",
-          maxWidth: mobile ? 300 : 220,
-          height: mobile ? 300 : "176px",
+          maxWidth: mobile ? 210 : 220,
+          height: mobile ? "176px" : "176px",
           objectFit: "contain",
-          mb: mobile ? 3.5 : "29px",
+          mb: mobile ? "38px" : "29px",
           display: "block",
         }}
       />
@@ -211,7 +211,7 @@ export default function HowGreekYogurtIsMadeSection() {
   // [LEFT_INSET] + [CARD] + [GAP] + [BLUE_PEEK] == viewportWidth
   const effectiveMobileWidth = Math.max(0, carouselWidth - MOBILE_LEFT_INSET);
   const mobileCardWidth = Math.max(
-    280,
+    336,
     effectiveMobileWidth - (MOBILE_BLUE_PEEK + MOBILE_GAP),
   );
   const mobileTranslateX = -(activeStep * (mobileCardWidth + MOBILE_GAP));
@@ -233,12 +233,12 @@ export default function HowGreekYogurtIsMadeSection() {
           md: "url(/images/how-made-hero-desktop.svg)",
         },
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center top",
+        backgroundSize: "contain",
+        backgroundPosition: "top center",
 
         // IMPORTANT: on mobile, no side padding so the cream panel can be full-width
         px: { xs: 0, md: 6, lg: "50px" },
-        pt: { xs: 8, md: "70px" },
+        pt: { xs: 0, md: "70px" },
         pb: { xs: "20px" },
       }}
     >
@@ -268,6 +268,20 @@ export default function HowGreekYogurtIsMadeSection() {
           </Typography>
         </Box>
 
+        <Box sx={{ display: { xs: '', md: 'none' } }}>
+            <Box
+              component="img"
+              sx={{
+                height: '100%',
+                width: '100%',
+                maxHeight: { xs: '100%', md: 167 },
+                maxWidth: { xs: '100%', md: 250 },
+              }}
+              alt=""
+              src="../images/how-all-out-mob-img.svg"
+            />
+        </Box>
+
         {/* Cream panel */}
         <Box
           sx={{
@@ -279,19 +293,23 @@ export default function HowGreekYogurtIsMadeSection() {
             // Desktop: panel centered in maxWidth
             mx: { xs: 0, md: "auto" },
             px: { xs: 0, md: 6 },
-            pt: { xs: 4, md: "70px" },
-            pb: { xs: 4, md: "64px" },
+            pt: { xs: 0, md: "70px" },
+            pb: { xs: 0, md: "64px" },
           }}
         >
           {/* Panel heading/subcopy with padding on mobile */}
-          <Box sx={{ px: { xs: 3, md: 0 } }}>
+          <Box sx={{ 
+            px: { xs: 3, md: 0 },
+            backgroundColor: { xs: "#1A3C34", md: "transparent" },  
+          }}>
             <Typography
               variant="d2c_h1"
               component="h3"
               align="center"
               sx={{
-                color: "#1A3C34",
+                color: { xs: "#F8F3E3", md: "#1A3C34" },
                 mb: 1,
+                pt: { xs: 3, md: 0 },
               }}
             >
               No subs, no shortcuts
@@ -302,10 +320,29 @@ export default function HowGreekYogurtIsMadeSection() {
               component="p"
               align="center"
               sx={{
-                color: "#1A3C34",
-                my: { xs: 3, md: "50px" },
+                color: { xs: "#F8F3E3", md: "#1A3C34" },
+                my: { xs: '20px', md: "50px" },
                 maxWidth: "100%",
                 mx: "auto",
+                paddingBottom: { xs: '40px', md: 0 },
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              Great nutrition comes from a process. 
+              And we’ve spent decades perfecting ours.
+            </Typography>
+
+            <Typography
+              variant="d2c_h3"
+              component="p"
+              align="center"
+              sx={{
+                color: { xs: "#F8F3E3", md: "#1A3C34" },
+                my: { xs: '20px', md: "50px" },
+                maxWidth: "100%",
+                mx: "auto",
+                paddingBottom: { xs: '40px', md: 0 },
+                display: { xs: 'none', md: 'block' },
               }}
             >
               At Chobani, we believe nutrition comes from real ingredients and
@@ -383,6 +420,7 @@ export default function HowGreekYogurtIsMadeSection() {
                   justifyContent: "center",
                   zIndex: 5,
                   paddingTop: "4px",
+                  paddingRight: "16px",
                 }}
               >
                 <Typography
@@ -417,19 +455,21 @@ export default function HowGreekYogurtIsMadeSection() {
       <Box
         sx={{
           px: { xs: 3, md: 0 },
+          py: { xs: '20px', md: 0 },
           maxWidth: { xs: "100%", md: 1628 },
-          margin: { xs: "16px auto 0", md: "0 auto 0" },
+          margin: { xs: "0px auto 0", md: "0 auto 0" },
+          backgroundColor: { xs: "#F8F3E3", md: "transparent" },
         }}
       >
         <Typography
           variant="d2c_h5"
           component="p"
           sx={{
-            color: "#fff",
-            mt: { xs: 2.5, md: "20px" },
+            color: {xs: "#1A3C34", md: "#F8F3E3"},
+            mt: { xs: 0, md: "20px" },
             mb: 0,
             textAlign: "left",
-            maxWidth: "296px",
+            maxWidth: { xs: "296px", md: "355px" } ,
           }}
         >
           † According to the FDA, no significant difference has been found
