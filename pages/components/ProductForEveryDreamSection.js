@@ -777,6 +777,100 @@ export default function ProductForEveryDreamSection({ data }) {
                         </Typography>
                       ))}
                     </Box>
+
+                    {t.showCompleteBox ? (
+                      <Box
+                        sx={{
+                          border: `2px solid ${
+                            t.panelFg === "#F8F3E3"
+                              ? "rgba(248,243,227,0.70)"
+                              : "rgba(26,60,52,0.45)"
+                          }`,
+                          borderRadius: 1.5,
+                          overflow: "hidden",
+                          mt: 2,
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            borderBottom: `2px solid ${
+                              t.panelFg === "#F8F3E3"
+                                ? "rgba(248,243,227,0.70)"
+                                : "rgba(26,60,52,0.45)"
+                            }`,
+                            px: 1.6,
+                            py: 1.2,
+                            textAlign: "center",
+                          }}
+                        >
+                          <Typography
+                            variant="d2c_h5"
+                            component="p"
+                            sx={{
+                              m: 0,
+                              letterSpacing: "1px",
+                              textTransform: "uppercase",
+                              color: t.panelFg,
+                            }}
+                          >
+                            COMPLETE PROTEINS <br /> &amp; VITAMIN B12 TO:
+                          </Typography>
+                        </Box>
+
+                        <Box
+                          sx={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(3, 1fr)",
+                            px: 1.6,
+                            py: 1.6,
+                            textAlign: "center",
+                            gap: 1,
+                          }}
+                        >
+                          {[
+                            {
+                              label: "SUPPORT\nSTRENGTH",
+                              icon: "/images/icon-strength.svg",
+                            },
+                            {
+                              label: "UNLOCK\nENERGY",
+                              icon: "/images/icon-energy.svg",
+                            },
+                            {
+                              label: "FEEL\nFULL",
+                              icon: "/images/icon-feel-full.svg",
+                            },
+                          ].map((it, i) => (
+                            <Box key={i}>
+                              <Box
+                                component="img"
+                                src={it.icon}
+                                alt=""
+                                sx={{
+                                  width: 34,
+                                  height: 34,
+                                  objectFit: "contain",
+                                  mb: 0.8,
+                                }}
+                              />
+                              <Typography
+                                variant="d2c_h5"
+                                component="p"
+                                sx={{
+                                  m: 0,
+                                  whiteSpace: "pre-line",
+                                  letterSpacing: "0.8px",
+                                  textTransform: "uppercase",
+                                  color: t.panelFg,
+                                }}
+                              >
+                                {it.label}
+                              </Typography>
+                            </Box>
+                          ))}
+                        </Box>
+                      </Box>
+                    ) : null}
                   </Box>
                 </Box>
               ) : null}
